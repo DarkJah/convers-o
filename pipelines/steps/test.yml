@@ -1,0 +1,10 @@
+steps:
+  # Executa análise estática do código com pylint
+  - script: |
+      pylint app.py
+    displayName: "Run linting"
+
+  # Executa testes unitários com pytest
+  - script: |
+      pytest
+    displayName: "Run tests"

@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:host,
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+[type="button"],
+[type="reset"],
+[type="submit"],
+[type="search"],
+::-webkit-file-upload-button {
+  -webkit-appearance: button;
+  appearance: button;
+}

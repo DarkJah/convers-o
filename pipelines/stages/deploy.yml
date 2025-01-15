@@ -1,0 +1,5 @@
+stages:
+  - stage: Deploy
+    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/main'))
+    jobs:
+      - template: ../jobs/deploy-heroku.yml

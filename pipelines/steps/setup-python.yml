@@ -1,0 +1,5 @@
+# Configura a versão do Python especificada na variável PYTHON_VERSION
+steps:
+  - task: UsePythonVersion@0
+    inputs:
+      versionSpec: "$(PYTHON_VERSION)"

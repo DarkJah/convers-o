@@ -1,0 +1,8 @@
+jobs:
+  - job: BuildAndTest
+    steps:
+      - template: ../steps/setup-python.yml
+      - template: ../steps/setup-node.yml
+      - template: ../steps/install-dependencies.yml
+      - template: ../steps/build-css.yml
+      - template: ../steps/test.yml

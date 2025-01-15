@@ -1,0 +1,8 @@
+jobs:
+  - deployment: DeployToHeroku
+    environment: "production"
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+            - template: ../steps/deploy-heroku.yml

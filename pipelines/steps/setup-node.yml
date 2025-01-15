@@ -1,0 +1,5 @@
+# Configura a versão do Node.js especificada na variável NODE_VERSION
+steps:
+  - task: NodeTool@0
+    inputs:
+      versionSpec: "$(NODE_VERSION)"

@@ -1,0 +1,5 @@
+# Compila os arquivos CSS do Tailwind
+steps:
+  - script: |
+      npm run build
+    displayName: "Build CSS"

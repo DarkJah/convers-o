@@ -1,0 +1,17 @@
+image:
+  repository: registry.example.com/conversao-distancia
+  tag: latest
+  pullPolicy: Always
+
+service:
+  type: ClusterIP
+  port: 80
+
+ingress:
+  enabled: true
+  className: nginx
+  hosts:
+    - host: conversao
+      paths:
+        - path: /
+          pathType: Prefix

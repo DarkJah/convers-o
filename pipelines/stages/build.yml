@@ -1,0 +1,4 @@
+stages:
+  - stage: Build
+    jobs:
+      - template: ../jobs/build-and-test.yml

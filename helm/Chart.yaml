@@ -1,0 +1,4 @@
+apiVersion: v2
+name: conversao-distancia
+description: Aplicação de conversão de distâncias
+version: 0.1.0

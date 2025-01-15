@@ -1,0 +1,16 @@
+trigger:
+  - main
+
+pool:
+  vmImage: "ubuntu-latest"
+
+variables:
+  PYTHON_VERSION: "3.10"
+  NODE_VERSION: "18"
+  REGISTRY_URL: "registry.example.com"
+  IMAGE_NAME: "conversao-distancia"
+  NAMESPACE: "producao"
+
+stages:
+  - template: pipelines/stages/build.yml
+  - template: pipelines/stages/deploy.yml

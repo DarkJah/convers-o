@@ -1,0 +1,32 @@
+# Faz deploy da aplicação no Rancher/Kubernetes
+steps:
+  - task: HelmInstaller@0
+    inputs:
+      helmVersion: "3.7.0"
+    displayName: "Install Helm"
+
+  - script: |
+      # Login no registro de containers
+      docker login $(REGISTRY_URL) -u $(REGISTRY_USERNAME) -p $(REGISTRY_PASSWORD)
+
+      # Build e push da imagem
+      docker build -t $(REGISTRY_URL)/$(IMAGE_NAME):$(Build.BuildId) .
+      docker push $(REGISTRY_URL)/$(IMAGE_NAME):$(Build.BuildId)
+    displayName: "Build and Push Image"
+
+  - script: |
+      # Configurar acesso ao cluster
+      kubectl config set-cluster rancher --server=$(RANCHER_URL)
+      kubectl config set-credentials rancher-user --token=$(RANCHER_TOKEN)
+      kubectl config set-context rancher --cluster=rancher --user=rancher-user
+      kubectl config use-context rancher
+
+      # Deploy usando Helm
+      helm upgrade --install conversao-distancia ./helm \
+        --namespace $(NAMESPACE) \
+        --set image.repository=$(REGISTRY_URL)/$(IMAGE_NAME) \
+        --set image.tag=$(Build.BuildId)
+    displayName: "Deploy to Rancher"
+    env:
+      RANCHER_URL: $(RANCHER_URL)
+      RANCHER_TOKEN: $(RANCHER_TOKEN)
