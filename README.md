@@ -24,4 +24,4 @@ Aplicação web para conversão de diferentes unidades de distância, construíd
 2. Instale as dependências Python
 3. Instale as dependências Node.js
 4. Build do CSS
-5.⚡Execução
+5. ⚡Execução
